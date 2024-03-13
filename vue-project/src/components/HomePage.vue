@@ -9,10 +9,9 @@
       <h2>{{ cruise.name }}</h2>
       <div>{{ cruise.description }}</div>
       <hr />
-
+      <BookingForm @bookingAdded="addBooking"></BookingForm>
       <BookingList :bookings="bookings"></BookingList>
     </div>
-    <button class="btn btn-primary">Hello</button> 
   </section>
 </template>
 
@@ -20,6 +19,7 @@
 import { defineComponent } from 'vue'
 import UserDisplay from './user/UserDisplay.vue'
 import BookingList from './bookings/BookingList.vue'
+import BookingForm from './bookings/BookingForm.vue'
 export default defineComponent({
   data() {
     return {
@@ -40,9 +40,15 @@ export default defineComponent({
       }
     }
   },
+  methods: {
+    addBooking(booking: any) {
+      this.bookings.push(booking)
+    }
+  },
   components: {
     UserDisplay,
-    BookingList
+    BookingList,
+    BookingForm
   }
 })
 </script>

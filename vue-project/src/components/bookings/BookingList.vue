@@ -34,7 +34,7 @@ export default defineComponent({
       }
       return '$ ' + totalCost.toLocaleString('en-US')
     }
-  }
+  },
 })
 </script>
 
