@@ -10,21 +10,16 @@
       <div>{{ cruise.description }}</div>
       <hr />
 
-      <div class="row">
-        <div>
-          <!-- TODO: Add booking-form -->
-        </div>
-        <div>
-          <!-- TODO: Add booking-list -->
-        </div>
-      </div>
+      <BookingList :bookings="bookings"></BookingList>
     </div>
+    <button class="btn btn-primary">Hello</button> 
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import UserDisplay from './user/UserDisplay.vue'
+import BookingList from './bookings/BookingList.vue'
 export default defineComponent({
   data() {
     return {
@@ -46,7 +41,8 @@ export default defineComponent({
     }
   },
   components: {
-    UserDisplay
+    UserDisplay,
+    BookingList
   }
 })
 </script>
@@ -55,7 +51,7 @@ export default defineComponent({
 body {
   background-color: #f2f2f2;
   margin: 0, 5%;
-  font-family: tahoma;
+  font-family: tahoma, sans-serif;
 }
 
 .row {
