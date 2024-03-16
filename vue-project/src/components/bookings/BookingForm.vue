@@ -19,9 +19,6 @@ export default defineComponent({
   },
   emits: ['bookingAdded'],
   methods: {
-    showModal() {
-      ;(this.thisModal as any)?.value.Show()
-    },
     saveBooking() {
       this.$emit('bookingAdded', this.booking)
     }
