@@ -1,7 +1,10 @@
 {
   "cSpell.words": [
+    "Emps",
+    "examplerestservice",
     "fastapi",
     "mycompany",
     "uvicorn"
-  ]
+  ],
+  "java.compile.nullAnalysis.mode": "automatic"
 }
