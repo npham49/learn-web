@@ -1,6 +1,6 @@
 import { libsql } from "@lucia-auth/adapter-sqlite";
 import { github } from "@lucia-auth/oauth/providers";
-import { lucia, Middleware } from "lucia";
+import { lucia, type Middleware } from "lucia";
 import { config } from "../config";
 import { client } from "../db";
 
@@ -11,7 +11,7 @@ const envAliasMap = {
 
 const envAlias = envAliasMap[config.env.NODE_ENV];
 
-type ElysiaContext = {
+export interface ElysiaContext {
   request: Request;
   set: {
     headers: Record<string, string> & {
@@ -20,7 +20,7 @@ type ElysiaContext = {
     status?: number | undefined | string;
     redirect?: string | undefined;
   };
-};
+}
 
 export const elysia = (): Middleware<[ElysiaContext]> => {
   return ({ args }) => {
