@@ -13,10 +13,9 @@ const app = new Elysia()
   .use(pages)
   .onStart(({ log }) => {
     if (config.env.NODE_ENV === "development") {
-      void fetch("http://localhost:3001/restart");
+      void fetch("http://localhost:3010/restart");
       // log.debug("🦊 Triggering Live Reload");
       console.log("🦊 Triggering Live Reload");
-
     }
   })
   .onError(({ code, error, request, log }) => {

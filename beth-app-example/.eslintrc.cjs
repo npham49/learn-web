@@ -49,6 +49,9 @@ const config = {
 
     // This rule doesn't seem to be working properly
     "@typescript-eslint/prefer-nullish-coalescing": "off",
+
+    // We need to deserialize the cookies object and other objects and this is preventing it
+    "@typescript-eslint/dot-notation": "off",
   },
 };
 

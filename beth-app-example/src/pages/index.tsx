@@ -1,26 +1,17 @@
-import { Suspense } from "beth-stack/jsx";
 import { Elysia } from "elysia";
-import { authed } from "../auth/middleware";
 import { BaseHtml } from "../components/base";
-import { InitialTweetList, TweetCreationForm } from "../components/tweets";
 import { ctx } from "../context";
 
 export const index = new Elysia()
   .use(ctx)
-  .derive(async (ctx) => {
-    const authRequest = ctx.auth.handleRequest(ctx);
-    const session = await authRequest.validate();
-
-    return { session };
-  })
-  .get("/", async ({ htmlStream, session, db }) => {
+  .get("/", ({ htmlStream, session, db: _db }) => {
     return htmlStream(() => (
       <BaseHtml>
         <div class="flex flex-col items-center py-3">
           {session ? (
             <>
               <h1 class="text-2xl font-bold text-gray-800" safe>
-                Hi! {session.user.handle}
+                Hi! {session.user.name}
               </h1>
               <button
                 hx-post="/api/auth/signout"
@@ -28,7 +19,6 @@ export const index = new Elysia()
               >
                 Sign Out
               </button>
-              <TweetCreationForm />
             </>
           ) : (
             <a
@@ -39,7 +29,6 @@ export const index = new Elysia()
               Sign In
             </a>
           )}
-          <InitialTweetList />
         </div>
       </BaseHtml>
     ));
